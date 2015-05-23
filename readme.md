@@ -4,20 +4,16 @@ VagrantOps will work off of the base image here.
 
 This image does a few things:
 
-1. Create a base server from which VagrantOps will work off of. This base server of this base image will be the latest Ubuntu LTS.
-2. Install the bare necessities and common packages, including utilities (git, tmux, vim, wget) and also some extras needed to run Ansible, such as Pip and Ansible itself.
-3. Installs all Ansible roles so they exist on the base image and can therefore be run without extra dependencies on users' host machines.
+1. Create a base server image for VagrantOps to use.
+2. This repository uses the latest Ubuntu LTS point release, e.g. `14.04.2`.
+2. Install the Ansible and add a basic configuration that will make running Ansible locally easier.
 
-## Ansible Roles to Start With
 
-* Nginx
-* MySQL (MariaDB?)
-* PostgreSQL
-* Redis
-* PHP (FPM)
-* Python Dev Tools (pip, virtualenv)
-* Ruby Dev Tools (Rails? rbenv or "best"?)
+## Development
 
-## File-based config
+To create your own base image, or to test PR's:
 
-We can use a yaml file to let users define roles and variables. This will be the default and "phase 1".
+1. Clone this repository
+2. Edit the `Vagrantfile` or `init.sh` provisioning script
+3. Use `vagrant up` to start the server up and build it. You may wish to comment out `config.ssh.insert_key = false` within the `Vagantfile` so you can inspect the image after building it.
+4. Run `build.sh` to build a new Vagrant image usable by others.
