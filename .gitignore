@@ -1,3 +1,5 @@
 .DS_Store
 .idea*
 .vagrant
+virtualbox-build-output.log
+virtualbox.box
